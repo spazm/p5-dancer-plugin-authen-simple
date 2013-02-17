@@ -6,7 +6,8 @@ use Dancer ':syntax';
 use Dancer::Plugin;
 use Module::Load;
 use Authen::Simple;
-use Memoize;
+
+use Moo;
 
 #ABSTRACT: Easy Authentication for Dancer applications via Authen::Simple
 
@@ -91,25 +92,23 @@ L<Authen::Simple>
 
 =cut
 
-sub authen
-{
-    _authen( plugin_setting() );
-}
+has authen => (
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+        my $conf = plugin_setting;
 
-memoize('_authen');
-sub _authen
-{
-    my $conf = shift;
-    my @adapters = ();
-    $DB::single = 1;
-    foreach my $adapter_name ( keys %$conf )
-    {
-        my $driver = "Authen::Simple::$adapter_name";
-        load $driver;
-        push @adapters, $driver->new( %{ $conf->{$adapter_name} } );
-    }
-    Authen::Simple->new(@adapters);
-}
+        my @adapters = ();
+        foreach my $adapter_name ( keys %$conf )
+        {
+            my $driver = "Authen::Simple::$adapter_name";
+            load $driver;
+            push @adapters, $driver->new( %{ $conf->{$adapter_name} } );
+
+        }
+        return Authen::Simple->new(@adapters);
+    },
+);
 
 register authen => \&authen;
 register_plugin for_versions => [ 1, 2 ];
