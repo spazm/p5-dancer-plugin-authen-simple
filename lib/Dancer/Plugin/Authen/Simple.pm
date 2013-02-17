@@ -6,6 +6,7 @@ use Dancer ':syntax';
 use Dancer::Plugin;
 use Module::Load;
 use Authen::Simple;
+use Memoize;
 
 #ABSTRACT: Easy Authentication for Dancer applications via Authen::Simple
 
@@ -92,7 +93,13 @@ L<Authen::Simple>
 
 sub authen
 {
-    my $conf = plugin_setting();
+    _authen( plugin_setting() );
+}
+
+memoize('_authen');
+sub _authen
+{
+    my $conf = shift;
     my @adapters = ();
     $DB::single = 1;
     foreach my $adapter_name ( keys %$conf )

@@ -1,4 +1,5 @@
 {{$NEXT}}
+    Memoize authen so we aren't rebuilding it every time
 
 0.130482  2013-02-17 10:52:40 America/Los_Angeles
     expands documentation with SEE ALSO section
