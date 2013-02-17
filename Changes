@@ -1,0 +1,9 @@
+{{$NEXT}}
+    expands documentation with SEE ALSO section
+    fixes Changes file generation
+
+0.130480 at 2013-02-17 18:36:00 +0000
+    initial cpan release
+    Preparing for cpan release
+    merged example test from Yanick.  Thanks Yanick!
+    added documentation
