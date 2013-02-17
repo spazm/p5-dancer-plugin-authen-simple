@@ -84,8 +84,9 @@ This is functionally equivalent to:
 
 sub authen
 {
-    my $conf     = plugin_settings();
+    my $settings = plugin_setting();
     my @adapters = ();
+    $DB::single = 1;
     foreach my $adapter_name ( keys %$conf )
     {
         my $driver = "Authen::Simple::$adapter_name";
