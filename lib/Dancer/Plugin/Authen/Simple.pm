@@ -77,8 +77,16 @@ This is functionally equivalent to:
     my $authen = Authen::Simple->new(
         Authen::Simple::Kerberos->new(realm => 'REALM.EXAMPLE.COM'),
         Authen::Simple::SMB->new(domain => 'DOMAIN', pdc => 'PDC'),
-        Authen::Simple::LDAP->new(host => 'ldap.example.com, ... )
+        Authen::Simple::LDAP->new(host => 'ldap.example.com', ... )
     );
+
+=cut
+
+=head1 SEE ALSO
+
+L<Dancer>
+
+L<Authen::Simple>
 
 =cut
 
