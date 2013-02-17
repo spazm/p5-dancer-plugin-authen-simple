@@ -3,7 +3,7 @@ use warnings;
 
 use lib 't/lib';
 
-use Test::More tests => 1;
+use Test::More;
 
 {
     package WebApp;
@@ -33,5 +33,4 @@ use Dancer::Test apps => 'WebApp';
 response_content_is '/auth/foo/bar' => 0, "not authenticated";
 response_content_is '/auth/root/god' => 1, "authenticated";
 
-
-
+done_testing;

@@ -84,7 +84,7 @@ This is functionally equivalent to:
 
 sub authen
 {
-    my $settings = plugin_setting();
+    my $conf = plugin_setting();
     my @adapters = ();
     $DB::single = 1;
     foreach my $adapter_name ( keys %$conf )
