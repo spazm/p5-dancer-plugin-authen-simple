@@ -9,8 +9,9 @@ use Authen::Simple;
 
 sub authen
 {
-    my $conf     = plugin_settings();
+    my $settings     = plugin_setting();
     my @adapters = ();
+    $DB::single = 1;
     foreach my $adapter_name ( keys %{$settings} )
     {
         my $driver = "Authen::Simple::$adapter_name";
