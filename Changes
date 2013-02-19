@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+0.130500  2013-02-18 22:44:20 America/Los_Angeles
+    Tested and fixed code in SYNOPSIS
+
 0.130490  2013-02-18 12:00:50 America/Los_Angeles
     Memoize authen so we aren't rebuilding it every time
 
