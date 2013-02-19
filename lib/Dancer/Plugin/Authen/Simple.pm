@@ -13,7 +13,7 @@ use Memoize;
 =head1 SYNOPSIS
 
     use Dancer;
-    use Dancer::Plugins::Authen::Simple;
+    use Dancer::Plugin::Authen::Simple;
 
     # calling the authen keyword will get you a Authen::Simple object
     # e.g. authen->authenticate( $user, $pass)
@@ -34,7 +34,7 @@ use Memoize;
             debug "Password correct";
 
             # Logged in successfully
-            session user => $user;
+            session user => params->{user};
             redirect params->{path} || '/';
         }
         else
